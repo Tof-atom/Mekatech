@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="2"
+    tools:context=".Fragment.ProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile_back3"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/accountInfo_textView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="@string/accountInfo_textView"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/firstName_textView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="@string/firstName_textView"
+            android:textAlignment="textStart"
+            android:paddingStart="20dp"
+            />
+        <TextView
+            android:id="@+id/lastName_textView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="@string/lastName_textView"
+            android:textAlignment="textStart"
+            android:paddingStart="20dp"
+            />
+        <TextView
+            android:id="@+id/email_textView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="@string/email_textView"
+            android:textAlignment="textStart"
+            android:paddingStart="20dp"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/black"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/updateAccount_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/updateAccount_btn" />
+        <Button
+            android:id="@+id/membership_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/membership_btn"/>
+
+    </LinearLayout>
+
+</LinearLayout>

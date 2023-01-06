@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        TODO: impliment logic for fragments activity
         Intent intent = new Intent(MainActivity.this, Activity_login.class);
         startActivity(intent);
     }
