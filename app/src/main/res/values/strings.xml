@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Mekatech</string>
+    <string name="createAccount_textView">Create an account</string>
+    <string name="firstName_editText"></string>
+    <string name="lastName_editText"></string>
+    <string name="email_editText"></string>
+    <string name="password_editText"></string>
+    <string name="passwordConf_editText"></string>
+    <string name="gender_textView">Gender</string>
+    <string name="female_rBtn">Female</string>
+    <string name="male_rBtn">Male</string>
+    <string name="register_btn">Register</string>
+    <string name="login_btn">Log in</string>
 </resources>
