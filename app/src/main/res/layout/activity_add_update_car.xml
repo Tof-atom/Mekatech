@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddUpdateCarActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="220dp"
+        android:layout_height="35dp"
+        android:text="Choose your car"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.052" />
+
+
+    <TextView
+        android:id="@+id/year_textView"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/year_textView"
+        android:textAlignment="textStart"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/model_textView"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="45dp"
+        android:text="@string/model_textView"
+        android:textAlignment="textStart"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="@+id/brand_textView"
+        app:layout_constraintTop_toBottomOf="@+id/brand_textView" />
+
+    <TextView
+        android:id="@+id/brand_textView"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="45dp"
+        android:text="@string/brand_textView"
+        android:textAlignment="textStart"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/year_textView"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="@+id/year_textView"
+        app:layout_constraintTop_toBottomOf="@+id/year_textView" />
+
+    <TextView
+        android:id="@+id/engineDisplacement_textView"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="45dp"
+        android:text="@string/engineDisplacement_textView"
+        android:textAlignment="textStart"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/model_textView"
+        app:layout_constraintStart_toStartOf="@+id/model_textView"
+        app:layout_constraintTop_toBottomOf="@+id/model_textView" />
+
+    <Spinner
+        android:id="@+id/spinner_year"
+        android:layout_width="140dp"
+        android:layout_height="20dp"
+        android:minHeight="48dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Spinner
+        android:id="@+id/spinner_brand"
+        android:layout_width="140dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="45dp"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_year"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/spinner_year"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_year" />
+
+    <Spinner
+        android:id="@+id/spinner_model"
+        android:layout_width="140dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="45dp"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_brand"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/spinner_brand"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_brand" />
+
+    <EditText
+        android:id="@+id/engineDisplacement_editText"
+        android:layout_width="140dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="45dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/engineDisplacement_editText"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_model"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/spinner_model"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_model" />
+
+    <Button
+        android:id="@+id/submitCarAddUpdate_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="@string/submitCarAddUpdate_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/engineDisplacement_editText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

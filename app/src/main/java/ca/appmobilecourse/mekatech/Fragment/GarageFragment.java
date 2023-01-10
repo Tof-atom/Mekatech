@@ -1,5 +1,6 @@
 package ca.appmobilecourse.mekatech.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,7 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import ca.appmobilecourse.mekatech.AddUpdateCarActivity;
+import ca.appmobilecourse.mekatech.FindHelpActivity;
 import ca.appmobilecourse.mekatech.R;
 
 /**
@@ -16,6 +20,8 @@ import ca.appmobilecourse.mekatech.R;
  * create an instance of this fragment.
  */
 public class GarageFragment extends Fragment {
+
+    private Button addUpdateCar_btn;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +67,16 @@ public class GarageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_garage, container, false);
+        View view = inflater.inflate(R.layout.fragment_garage, container, false);
+        addUpdateCar_btn = (Button) view.findViewById(R.id.addUpdateCar_btn);
+        addUpdateCar_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), AddUpdateCarActivity.class);
+//                ((MainActivity) getActivity()).startActivity(intent);
+                startActivity(intent);
+            }
+        });
+        return view;
     }
 }
