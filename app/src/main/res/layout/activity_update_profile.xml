@@ -4,16 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/wallpaper"
-    tools:context=".activity_register">
+    tools:context=".UpdateProfileActivity">
 
     <TextView
         android:id="@+id/updateAccount_textView"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:text="@string/createAccount_textView"
-        android:textSize="20dp"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:text="@string/updateAccount_textView"
         android:textAlignment="center"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,25 +21,26 @@
 
     <EditText
         android:id="@+id/firstName_editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="First name"
-        android:layout_marginTop="10dp"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text="@string/firstName_editText"
         app:layout_constraintEnd_toEndOf="@+id/updateAccount_textView"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/updateAccount_textView"
         app:layout_constraintTop_toBottomOf="@+id/updateAccount_textView" />
 
     <EditText
         android:id="@+id/lastName_editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
         android:ems="10"
         android:hint="Last name"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text="@string/lastName_editText"
@@ -50,10 +50,10 @@
 
     <EditText
         android:id="@+id/email_editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
         android:ems="10"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:hint="Email address"
         android:inputType="textPersonName"
         android:minHeight="48dp"
@@ -65,10 +65,10 @@
 
     <EditText
         android:id="@+id/password_editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
         android:ems="10"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:hint="Password"
         android:inputType="textPersonName"
         android:minHeight="48dp"
@@ -79,10 +79,10 @@
 
     <EditText
         android:id="@+id/passwordConf_editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
         android:ems="10"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:hint="Confirm your password"
         android:inputType="textPersonName"
         android:minHeight="48dp"
@@ -96,7 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:text="@string/gender_textView"
         app:layout_constraintEnd_toEndOf="@+id/passwordConf_editText"
         app:layout_constraintStart_toStartOf="@+id/passwordConf_editText"
@@ -127,27 +127,67 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/register_btn"
+        android:id="@+id/submitUpdateAccount_btn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:backgroundTint="@color/purple_700"
-        android:text="@string/register_btn"
-        app:layout_constraintEnd_toEndOf="@+id/radioGroup"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/radioGroup"
+        android:text="@string/submitUpdateAccount_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
-    <Button
-        android:id="@+id/login_btn"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:backgroundTint="@color/purple_700"
-        android:text="@string/login_btn"
-        app:layout_constraintEnd_toEndOf="@+id/register_btn"
+    <TextView
+        android:id="@+id/firstName_textView"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/firstName_textView"
+        app:layout_constraintEnd_toStartOf="@+id/updateAccount_textView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateAccount_textView" />
+
+    <TextView
+        android:id="@+id/lastName_textView"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="31dp"
+        android:text="@string/lastName_textView"
+        app:layout_constraintEnd_toEndOf="@+id/firstName_textView"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/register_btn"
-        app:layout_constraintTop_toBottomOf="@+id/register_btn" />
+        app:layout_constraintStart_toStartOf="@+id/firstName_textView"
+        app:layout_constraintTop_toBottomOf="@+id/firstName_textView" />
+
+    <TextView
+        android:id="@+id/email_textView"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="31dp"
+        android:text="@string/email_textView"
+        app:layout_constraintEnd_toEndOf="@+id/lastName_textView"
+        app:layout_constraintStart_toStartOf="@+id/lastName_textView"
+        app:layout_constraintTop_toBottomOf="@+id/lastName_textView" />
+
+    <TextView
+        android:id="@+id/password_textView"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="31dp"
+        android:text="@string/password_textView"
+        app:layout_constraintEnd_toEndOf="@+id/email_textView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/email_textView"
+        app:layout_constraintTop_toBottomOf="@+id/email_textView" />
+
+    <TextView
+        android:id="@+id/passwordConf_textView"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/passwordConf_textView"
+        app:layout_constraintStart_toStartOf="@+id/password_textView"
+        app:layout_constraintTop_toBottomOf="@+id/password_textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

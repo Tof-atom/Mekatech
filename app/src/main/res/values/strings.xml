@@ -67,11 +67,16 @@
 
     <!-- Profile variables -->
     <string name="accountInfo_textView">Account Info</string>
-    <string name="firstName_textView">User First Name</string>
-    <string name="lastName_textView">User Last Name</string>
-    <string name="email_textView">User email address</string>
+    <string name="firstName_textView">First Name</string>
+    <string name="lastName_textView">Last Name</string>
+    <string name="email_textView">Email address</string>
     <string name="updateAccount_btn">Update your profile</string>
     <string name="membership_btn">Membership</string>
 
+    <!--    Update profile-->
+    <string name="updateAccount_textView">Update your account</string>
+    <string name="password_textView">Password</string>
+    <string name="passwordConf_textView">Confirm password</string>
+    <string name="submitUpdateAccount_btn">Submit your updates</string>
 
 </resources>
