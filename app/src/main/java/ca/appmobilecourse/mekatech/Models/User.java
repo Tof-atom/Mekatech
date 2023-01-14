@@ -7,20 +7,23 @@ public class User {
     private String lastName;
     private String email;
     private String password;
-    private String passwordConf;
     private String gender;
 
     public User() {
     }
 
-    public User(int _id, String firstName, String lastName, String email, String password, String passwordConf, String gender) {
+    public User(int _id, String firstName, String lastName, String email, String password, String gender) {
         this._id = _id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.passwordConf = passwordConf;
         this.gender = gender;
+    }
+
+    public User(int _id, String firstName) {
+        this._id = _id;
+        this.firstName = firstName;
     }
 
     public int get_id() {
@@ -63,14 +66,6 @@ public class User {
         this.password = password;
     }
 
-    public String getPasswordConf() {
-        return passwordConf;
-    }
-
-    public void setPasswordConf(String passwordConf) {
-        this.passwordConf = passwordConf;
-    }
-
     public String getGender() {
         return gender;
     }
@@ -87,7 +82,6 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", passwordConf='" + passwordConf + '\'' +
                 ", gender='" + gender + '\'' +
                 '}';
     }

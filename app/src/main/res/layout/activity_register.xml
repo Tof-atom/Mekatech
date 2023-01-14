@@ -103,7 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/passwordConf_editText" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/genderGroup"
         android:layout_width="200dp"
         android:layout_height="48dp"
         android:orientation="horizontal"
@@ -133,10 +133,10 @@
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/purple_700"
         android:text="@string/register_btn"
-        app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+        app:layout_constraintEnd_toEndOf="@+id/genderGroup"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/radioGroup"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintStart_toStartOf="@+id/genderGroup"
+        app:layout_constraintTop_toBottomOf="@+id/genderGroup" />
 
     <Button
         android:id="@+id/login_btn"
