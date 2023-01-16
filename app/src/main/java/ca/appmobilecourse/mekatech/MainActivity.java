@@ -23,14 +23,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     GarageFragment garageFragment = new GarageFragment();
     ProfileFragment profileFragment = new ProfileFragment();
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 //        TODO: impliment logic for fragments activity
-        Intent intent = new Intent(MainActivity.this, Activity_login.class);
-        startActivity(intent);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);

@@ -72,6 +72,7 @@
     <string name="email_textView">Email address</string>
     <string name="updateAccount_btn">Update your profile</string>
     <string name="membership_btn">Membership</string>
+    <string name="logout_btn">Log out</string>
 
     <!--    Update profile-->
     <string name="updateAccount_textView">Update your account</string>

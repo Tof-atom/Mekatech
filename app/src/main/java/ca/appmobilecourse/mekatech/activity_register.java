@@ -51,7 +51,7 @@ public class activity_register extends AppCompatActivity {
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                // TODO: Email validation, password encrypt and double check, create a session
                 // Receive checked radio button in gender group
                 int radioBtnIndex = genderGroup_rGr.getCheckedRadioButtonId();
                 if (radioBtnIndex == -1){

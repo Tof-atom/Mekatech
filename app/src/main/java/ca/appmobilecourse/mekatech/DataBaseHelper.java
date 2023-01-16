@@ -2,6 +2,7 @@ package ca.appmobilecourse.mekatech;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -26,7 +27,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTableStatement = "CREATE TABLE " + USER_TABLE + " (" + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_USER_FIRST_NAME + " TEXT, " +
-                COLUMN_USER_LAST_NAME + " TEXT, " + COLUMN_USER_PASSWORD + " TEXT, " + COLUMN_USER_EMAIL + " TEXT, "+ COLUMN_USER_GENDER + " TEXT)";
+                COLUMN_USER_LAST_NAME + " TEXT, " + COLUMN_USER_EMAIL + " TEXT, "+ COLUMN_USER_PASSWORD + " TEXT, " + COLUMN_USER_GENDER + " TEXT)";
 
         db.execSQL(createTableStatement);
     }
@@ -53,5 +54,33 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         } else {
             return true;
         }
+    }
+
+    public  User searchOne(String email){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // val query="select * from $TABLE_NAME where username =? and password = ?"
+        //val arguments= arrayOf(user, pass)
+        //db.rawQuery(query, arguments)
+        String query = "SELECT * FROM " + USER_TABLE + " WHERE " + COLUMN_USER_EMAIL + " = '" + email+ "'";
+        User user;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()){
+            int userId = cursor.getInt(0);
+            String userFirstName = cursor.getString(1);
+            String userLastName = cursor.getString(2);
+            String userEmail = cursor.getString(3);
+            String userPassword = cursor.getString(4);
+            String userGender = cursor.getString(5);
+
+            user = new User(userId, userFirstName, userLastName, userEmail, userPassword, userGender);
+            db.close();
+        } else {
+            user = new User(-1, "error");
+            return user;
+        }
+        return user;
     }
 }
