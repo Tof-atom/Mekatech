@@ -68,7 +68,7 @@ public class Activity_login extends AppCompatActivity {
 
     private void movedToMainActivity() {
         Intent intent = new Intent(Activity_login.this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 

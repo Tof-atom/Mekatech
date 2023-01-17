@@ -50,7 +50,7 @@ public class ProfileFragment extends Fragment {
                 sessionManagement.removeSession();
 
                 Intent intent = new Intent(getContext(), Activity_login.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
