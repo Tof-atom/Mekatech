@@ -11,12 +11,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import java.io.Console;
-import java.nio.charset.StandardCharsets;
-
 import ca.appmobilecourse.mekatech.Models.User;
 
-public class activity_register extends AppCompatActivity {
+public class Activity_register extends AppCompatActivity {
 
     private EditText firstName_editText;
     private EditText lastName_editText;
@@ -45,7 +42,7 @@ public class activity_register extends AppCompatActivity {
         passwordConf_editText = (EditText) findViewById(R.id.passwordConf_editText);
         genderGroup_rGr = (RadioGroup) findViewById(R.id.genderGroup);
 
-        dataBaseHelper = new DataBaseHelper(activity_register.this);
+        dataBaseHelper = new DataBaseHelper(Activity_register.this);
 
         register_btn = (Button) findViewById(R.id.register_btn);
         register_btn.setOnClickListener(new View.OnClickListener() {
@@ -55,28 +52,28 @@ public class activity_register extends AppCompatActivity {
                 // Receive checked radio button in gender group
                 int radioBtnIndex = genderGroup_rGr.getCheckedRadioButtonId();
                 if (radioBtnIndex == -1){
-                    Toast.makeText(activity_register.this, "Please select gender", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Activity_register.this, "Please select gender", Toast.LENGTH_LONG).show();
                     return;
                 }
 //                    View radioButton = genderGroup_rGr.findViewById(radioBtnIndex);
 //                    int idx = genderGroup_rGr.indexOfChild(radioButton);
 
-                    gender_rBtn = (RadioButton) findViewById(radioBtnIndex);
-                    String gender = gender_rBtn.getText().toString();
+                gender_rBtn = (RadioButton) findViewById(radioBtnIndex);
+                String gender = gender_rBtn.getText().toString();
 
                 User user;
 
                 try {
                     user = new User(0, firstName_editText.getText().toString(), lastName_editText.getText().toString(), email_editText.getText().toString(), password_editText.getText().toString(), gender);
                 } catch (Exception e){
-                    Toast.makeText(activity_register.this, "Error occurred", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Activity_register.this, "Error occurred", Toast.LENGTH_LONG).show();
                     user = new User(-1, "error");
                 }
 
-                boolean success = dataBaseHelper.addOne(user);
-                Toast.makeText(activity_register.this, "You are registered", Toast.LENGTH_LONG).show();
+                boolean success = dataBaseHelper.addUser(user);
+                Toast.makeText(Activity_register.this, "You are registered", Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(activity_register.this, Activity_login.class);
+                Intent intent = new Intent(Activity_register.this, Activity_login.class);
                 startActivity(intent);
             }
         });
@@ -85,7 +82,7 @@ public class activity_register extends AppCompatActivity {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity_register.this, Activity_login.class);
+                Intent intent = new Intent(Activity_register.this, Activity_login.class);
                 startActivity(intent);
             }
         });

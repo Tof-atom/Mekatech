@@ -2,9 +2,9 @@ package ca.appmobilecourse.mekatech;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
-import android.content.IntentSender;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +21,19 @@ public class Activity_login extends AppCompatActivity {
     private Button login_btn;
     private Button register_btn;
 
+    // creating constant keys for shared preferences.
+    public static final String SHARED_PREFS = "shared_prefs";
+
+    // key for storing email.
+    public static final String EMAIL_KEY = "email_key";
+
+    // key for storing password.
+    public static final String PASSWORD_KEY = "password_key";
+
+    // variable for shared preferences.
+    SharedPreferences sharedpreferences;
+    String email, password;
+
     DataBaseHelper db = new DataBaseHelper(Activity_login.this);
     User user;
 
@@ -28,6 +41,10 @@ public class Activity_login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        email = sharedpreferences.getString("EMAIL_KEY", null);
+        password = sharedpreferences.getString("PASSWORD_KEY", null);
 
         // TODO: Email validation, password encrypt and double check
 
@@ -38,11 +55,15 @@ public class Activity_login extends AppCompatActivity {
 
                 email_editText = (EditText) findViewById(R.id.email_editText);
                 String email = email_editText.getText().toString();
-                user = db.searchOne(email);
+                user = db.searchUser(email);
 
-                Toast.makeText(Activity_login.this, user.toString(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(Activity_login.this, user.toString(), Toast.LENGTH_LONG).show();
                 //TODO: display message for non-existing user
-                if (user.get_id() != -1) login(user);
+                if (user != null) {
+                    login(user);
+                } else {
+                    Toast.makeText(Activity_login.this, "User account not found", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -50,39 +71,54 @@ public class Activity_login extends AppCompatActivity {
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Activity_login.this, activity_register.class);
+                Intent intent = new Intent(Activity_login.this, Activity_register.class);
                 startActivity(intent);
             }
         });
     }
 
-    public void login(User user){
+    public void login(User user) {
         // 1. log in to app and save session of user
         // 2. move to mainActivity
 
-        SessionManagement sessionManagement = new SessionManagement(Activity_login.this);
-        sessionManagement.saveSession(user);
+//        SessionManagement sessionManagement = new SessionManagement(Activity_login.this);
+//        sessionManagement.saveSession(user);
+
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+
+        // below two lines will put values for
+        // email and password in shared preferences.
+        editor.putString(EMAIL_KEY, user.getEmail());
+        editor.putString(PASSWORD_KEY, user.getPassword());
+
+        // to save our data with key and value.
+        editor.apply();
 
         movedToMainActivity();
     }
 
     private void movedToMainActivity() {
         Intent intent = new Intent(Activity_login.this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
     @Override
-    protected void onStart(){
+    protected void onStart() {
         super.onStart();
 
         //check if user is logged in
         //if user is logged in --> moveToMainActivity
 
-        SessionManagement sessionManagement = new SessionManagement(Activity_login.this);
-        int userId = sessionManagement.getSession();
-        if (userId != -1){
-            movedToMainActivity();
+//        SessionManagement sessionManagement = new SessionManagement(Activity_login.this);
+//        int userId = sessionManagement.getSession();
+//        if (userId != -1){
+//            movedToMainActivity();
+//        }
+
+        if (email != null && password != null) {
+            Intent intent = new Intent(Activity_login.this, MainActivity.class);
+            startActivity(intent);
         }
     }
 

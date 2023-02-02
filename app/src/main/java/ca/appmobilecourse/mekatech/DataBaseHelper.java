@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.nio.channels.Channel;
+
 import ca.appmobilecourse.mekatech.Models.User;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
@@ -37,18 +39,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean addOne(User user){
+    public boolean addUser(User user){
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
+        ContentValues values = getContentValues(user);
 
-        cv.put(COLUMN_USER_FIRST_NAME, user.getFirstName());
-        cv.put(COLUMN_USER_LAST_NAME, user.getLastName());
-        cv.put(COLUMN_USER_EMAIL, user.getEmail());
-        cv.put(COLUMN_USER_PASSWORD, user.getPassword());
-        cv.put(COLUMN_USER_GENDER, user.getGender());
-
-        long insert = db.insert(USER_TABLE, null, cv);
-
+        long insert = db.insert(USER_TABLE, null, values);
+        db.close();
         if(insert == -1){
             return false;
         } else {
@@ -56,7 +52,21 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public  User searchOne(String email){
+    public boolean updateUser(User user){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String email = String.valueOf(user.getEmail());
+        ContentValues values = getContentValues(user);
+        int update = db.update(USER_TABLE, values, COLUMN_USER_EMAIL + " =?", new String[]{email});
+        db.close();
+        if (update > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public  User searchUser(String email){
         SQLiteDatabase db = this.getReadableDatabase();
 
         // val query="select * from $TABLE_NAME where username =? and password = ?"
@@ -78,9 +88,30 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             user = new User(userId, userFirstName, userLastName, userEmail, userPassword, userGender);
             db.close();
         } else {
-            user = new User(-1, "error");
-            return user;
+            return null;
         }
         return user;
+    }
+
+    public boolean deleteUser(String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        int delete = db.delete(USER_TABLE, COLUMN_USER_EMAIL + " =?", new String[]{email});
+        db.close();
+        if (delete > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private static ContentValues getContentValues(User user){
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_USER_FIRST_NAME, user.getFirstName());
+        values.put(COLUMN_USER_LAST_NAME, user.getLastName());
+        values.put(COLUMN_USER_EMAIL, user.getEmail());
+        values.put(COLUMN_USER_PASSWORD, user.getPassword());
+        values.put(COLUMN_USER_GENDER, user.getGender());
+        return values;
     }
 }
